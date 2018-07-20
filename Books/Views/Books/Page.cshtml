@@ -1,0 +1,22 @@
+﻿@model Books.Page
+
+<div>
+    <div>
+        @Html.LabelFor(model => model.PageNo)
+        @Html.TextBox("PageNo", "", new { name = "Pages[{0}].PageNo" })
+
+        @Html.LabelFor(model => model.Title)
+        @Html.TextBox("Title", "", new { name = "Pages[{0}].Title" })
+
+        @Html.LabelFor(model => model.Description)
+        @Html.TextBox("Description", "" , new { name = "Pages[{0}].Description" })
+        @*@Html.LabelFor(model => model.PageNo)
+            @Html.TextBoxFor(model => model.PageNo, new { name= "Pages[{0}].PageNo" })
+
+            @Html.LabelFor(model => model.Title)
+            @Html.TextBoxFor(model => model.Title, new { name = "Pages[{0}].Title" })
+
+            @Html.LabelFor(model => model.Description)
+            @Html.TextBoxFor(model => model.Description, new { name = "Pages[{0}].Description" })*@
+    </div>
+</div>

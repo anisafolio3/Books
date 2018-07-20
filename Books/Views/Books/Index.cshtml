@@ -1,0 +1,71 @@
+﻿@model Books.Models.BookModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Add Book</h2>
+@using (@Html.BeginForm("Index", "Books", FormMethod.Post))
+{
+<div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Name)
+        <div>
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name, "")
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.NoofPages)
+        <div>
+            @*@Html.Label(@Model.NoofPages.ToString(), new { id = "lblNoofPages" })*@
+            <label id="lblNoofPages">0</label>
+            @*@Model.NoofPages*@
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.MainColor)
+        <div>
+            @Html.EditorFor(model => model.MainColor)
+            @Html.ValidationMessageFor(model => model.MainColor, "")
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PublishDate)
+        <div>
+            @Html.EditorFor(model => model.PublishDate)
+            @Html.ValidationMessageFor(model => model.PublishDate, "")
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.SelectedAuthorId)
+        <div>
+            @Html.DropDownListFor(model => model.SelectedAuthorId,
+                             new SelectList(Model.Authors, "AuthorId", "Name"), "- Please Select -")
+            @Html.ValidationMessageFor(model => model.SelectedAuthorId)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ISBN)
+        <div>
+            @Html.EditorFor(model => model.ISBN)
+            @Html.ValidationMessageFor(model => model.ISBN, "")
+        </div> 
+    </div>
+
+    <h1>Pages</h1>
+    <input type="button" id="btnAddPage" value="Add Page" url="@Url.Action("PageRow", "Books")" />
+    <div id="dvPages" name="Pages">
+        @*@foreach(var page in Model.Pages)
+        {
+            @Html.Partial("Page", page);
+        }*@
+    </div>
+
+    <input type="submit" value="Add" />
+</div>
+}
